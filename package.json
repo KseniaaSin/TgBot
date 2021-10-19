@@ -1,0 +1,30 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "telegraf": "^4.4.2",
+    "telegraf-inline-menu": "^6.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KseniaaSin/TgBot.git"
+  },
+  "keywords": [
+    "api",
+    "database"
+  ],
+  "author": "Ksenia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KseniaaSin/TgBot/issues"
+  },
+  "homepage": "https://github.com/KseniaaSin/TgBot#readme"
+}
