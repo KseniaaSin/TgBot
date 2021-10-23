@@ -16,39 +16,28 @@ bot.command('keyboard', (ctx) => {
 const nameHandler = Telegraf.on('text', async ctx => {
     ctx.scene.state.userId = ctx.message.chat.id
     ctx.scene.state.name = ctx.message.text
-    await ctx.reply('Сколько?')
+    await ctx.reply('Сколько?')    
     return ctx.wizard.next()
 });
 
 //3
 const sumHandler = Telegraf.hears(/^[0-9]+$/, async ctx => {
     ctx.scene.state.sum = ctx.message.text;
-    await ctx.reply('Каким способом произвести оплату?');
-    ctx.replyWithInvoice(invoice, typePay)
-    return ctx.wizard.next();
+    await ctx.reply('Каким способом произвести оплату?', Markup.inlineKeyboard ([
+            Markup.button.callback('Безналичные', 'btn_1'), 
+            Markup.button.callback('Наличные', 'btn_2' )
+        ])
+    )
+    return ctx.wizard.next()
 })
 
-// bot.command('button', async (ctx) => {
-//     return await ctx.reply('buttons', Markup.keyboard([
-//         Markup.button.cashlessPayment('Безналичные'),
-//         Markup.keyboard.cashPayment('Наличные')
-//     ]))
-// })
 
-const typePay = Markup.inlineKeyboard([
-    Markup.button.pay('Безналичные'),
-    Markup.button.pay('Наличные')
-])
-
-
-//нал безнал
 const ggHandler = Telegraf.on('text', async ctx => {
-    
     ctx.session.name = ctx.scene.state.name
     ctx.session.id = ctx.scene.state.userId
     ctx.session.sum = ctx.scene.state.sum
     ctx.session.gg = ctx.message.text
-    await ctx.reply('Хоросчо!');
+    await ctx.reply('Отлично!');
     return ctx.scene.leave();
 })
 
